@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格隔行变色</title>
+    <script>
+        window.onload=function () {
+            var oTab=document.getElementById('tab1');
+            function color() {
+                var oldColor="";
+                for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+                    oTab.tBodies[0].rows[i].onmouseover=function () {
+                        oldColor=this.style.background;
+                        this.style.background="pink";
+                    };
+                    oTab.tBodies[0].rows[i].onmouseout=function () {
+                        this.style.background=oldColor;
+                    };
+                }
+            }
+            function OldColors(){
+                for(var i=0;i<oTab.tBodies[0].rows.length;i++){
+                    if (i%2==0){
+                        oTab.tBodies[0].rows[i].style.background="#ccc";
+                    }
+                    else {
+                        oTab.tBodies[0].rows[i].style.background="";
+                    }
+                }
+            }
+            color();
+            OldColors();
+            var oTxtSearch=document.getElementById('txt-search');
+            var oBtnSearch=document.getElementById('btn-search');
+            var oTr=oTab.tBodies[0].rows;
+            oBtnSearch.onclick=function () {
+                if (oTxtSearch.value==''){
+                    alert('请输入搜索内容！');
+                    return;
+                }
+                for(var i=0;i<oTr.length;i++){
+//                    OldColors=oTr[i].style.background;
+//                    alert(OldColors);
+                    var content=oTr[i].cells[1].innerHTML.toLowerCase();
+                    var sea=oTxtSearch.value.toLowerCase();
+                    if (content.search(sea)!=-1){
+                        oTr[i].style.background='yellow';
+            }
+                    else if (i%2==0){
+                        oTr[i].style.background='#ccc';
+            }
+                    else {
+                        oTr[i].style.background='';
+                    }
+        }
+        };
+            var aTxtName=document.getElementById('txt-name');
+            var aTxtAge=document.getElementById('txt-age');
+            var aBtn=document.getElementById('btn');
+            var len=oTab.tBodies[0].rows.length+1;
+            aBtn.onclick=function () {
+                var oRow=document.createElement('tr');
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML=len++;
+                oRow.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oRow.appendChild(oTd);
+                oTd.innerHTML=aTxtName.value;
+
+                var oTd=document.createElement('td');
+                oRow.appendChild(oTd);
+                oTd.innerHTML=aTxtAge.value;
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML="<a href='javascript:'>删除<a/>";
+                oRow.appendChild(oTd);//
+                oTab.tBodies[0].appendChild(oRow);
+                color();
+                OldColors();
+                oTd.getElementsByTagName('a')[0].onclick=function () {
+                    oRow.remove(this.parentNode.parentNode);
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="txt-name" placeholder="姓名">
+    <input type="text" id="txt-age" placeholder="年龄">
+    <input type="button" value="增加" id="btn"><br><br>
+    <input type="text" id="txt-search" placeholder="请输入名字检索">
+    <input type="button" value="搜索" id="btn-search"><br><br>
+    <table id="tab1" border="1px" style="border-collapse: collapse;width: 500px;text-align: center;">
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>dasda</td>
+                <td>25</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>dawdfas</td>
+                <td>23</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>sdawfa</td>
+                <td>24</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>dawdfas</td>
+                <td>23</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>sdawfa</td>
+                <td>24</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

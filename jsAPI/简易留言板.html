@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="text" cols="30" rows="10"></textarea>
+    <input type="button" value="发布">
+    <ul id="list"> 
+
+    </ul>
+    <script>
+        var text=document.getElementById('text');
+        var btn=document.querySelector('input');
+        var ul=document.getElementById('list');
+        btn.onclick=function(){
+            if(text.value==""){
+                alert("发布内容为空！");
+                return;
+            }
+            var li=document.createElement('li');
+            li.innerHTML=text.value+"<a href='javascript:;'>删除</a>";
+            ul.insertBefore(li,ul.children[0]);
+            text.value="";
+            var as=document.querySelectorAll('a');
+            for(var i=0;i<as.length;i++){
+                as[i].onclick=function(){
+                    ul.removeChild(this.parentNode);
+                }
+        }
+        }
+    </script>
+</body>
+</html>

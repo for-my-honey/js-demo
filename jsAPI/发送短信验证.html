@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<SCRIPt>
+    window.addEventListener('load',function(){
+        var input=document.querySelector('input');
+        var time=5;
+        input.addEventListener('click',function(){
+            input.disabled=true;
+            var timer=setInterval(() => {
+                input.value=time+'秒后重新发送';
+                if(time==0){
+                    clearInterval(timer);
+                    input.disabled=false;
+                    input.value='发送';
+                    time=5;
+                };
+                time--;
+            }, 1000);
+        })
+    }) 
+</SCRIPt>
+<body>
+    <input type="button" value="发送">
+</body>
+</html>

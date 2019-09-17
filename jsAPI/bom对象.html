@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.addEventListener('load',function(){
+            // alert(1111)
+        })
+        window.addEventListener('DOMContentLoaded',function(){
+            // alert(2222) //页面元素加载完成就运行代码，无需加载图片样式表等文件
+        })
+        window.addEventListener('resize',function(){
+            // alert(111) //改变浏览器窗口大小执行函数
+        })
+        window.addEventListener('load',function(){
+            var div=document.querySelector('div');
+            var timer=window.setTimeout(function(){
+            div.style.display='none';
+        },5000)
+        clearTimeout(timer)  //清除定时器
+    })
+    
+    </script>
+</head>
+<body>
+    <div>
+        hahahahhaa
+    </div>
+</body>
+</html>

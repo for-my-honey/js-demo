@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{height: 400px;width: 215px;border: solid red 1px;display: none;background: #fff2c5;}
+        .active{border:none;background-color: #ffdddc;}
+        input:hover div{display: block;}
+    </style>
+    <script>
+        function getStyle(obj,name) {
+            if(obj.currentStyle){
+                return obj.currentStyle[name];
+            }
+            else {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+        window.onload=function () {
+            var ipt=document.getElementsByTagName('input');
+            var oDiv=document.getElementsByTagName('div');
+            var a=document.getElementById('div1');
+            alert(getStyle(a,'width'));
+            for(var i=0;i<ipt.length;i++){
+                ipt[i].index=i;
+                ipt[i].onclick=function () {
+                    for(var i=0;i<ipt.length;i++){
+                        ipt[i].className='';
+                        oDiv[i].style.display='none';
+                    }
+                    this.className='active';
+                    oDiv[this.index].style.display='block';
+            };
+        }};
+        
+
+    </script>
+</head>
+<body>
+    <input type="button" value="选项卡一" class="active">
+    <input type="button" value="选项卡二">
+    <input type="button" value="选项卡三">
+    <div id="div1" style="display: block;">大多数的</div>
+    <div id="div2">达到</div>
+    <div id="div3">设定</div>
+</body>
+</html>

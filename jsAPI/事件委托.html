@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 事件委托核心原理是不要给子节点添加事件监听器，
+        而是给父节点添加事件监听器，通过事件冒泡来影响子节点，使用e.target  提高程序性能-->
+    <ul>
+        <li>hahahahhaha</li>
+        <li>hahahahhaha</li>
+        <li>hahahahhaha</li>
+        <li>hahahahhaha</li>
+        <li>hahahahhaha</li>
+    </ul>
+    <script>
+        var ul=document.querySelector('ul');
+        ul.onclick=function(e){
+            e.target.style.background='green';
+        }
+    </script>
+</body>
+</html>

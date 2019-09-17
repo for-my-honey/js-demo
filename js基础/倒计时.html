@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<div class="hour"></div> 
+<div class="minute"></div>
+<div class="second"></div>
+<script>
+    var hour=document.querySelector('.hour');
+    var minute=document.querySelector('.minute');
+    var second=document.querySelector('.second');
+    var times=+new Date('2019-9-15 22:00:00'); //获取用户输入的时间毫秒数
+    var date=new Date();
+    function countDown(){
+        var now=+new Date();  //获取现在的总毫秒数
+        finalTime=(times-now)/1000; //相减除以1000得到剩余时间的秒数
+        var d=parseInt(((finalTime/60)/60)/24);
+        var h=parseInt(((finalTime/60)/60)%24);
+        var m=parseInt((finalTime/60)%60);
+        var s=parseInt(finalTime%60);
+        d=d<10 ? '0'+d : d;
+        h=h<10 ? '0'+h : h;
+        hour.innerHTML=h;
+        m=m<10 ? '0'+m : m;
+        minute.innerHTML=m;
+        s=s<10 ? '0'+s : s;
+        second.innerHTML=s;
+    }
+    // console.log(countDown('2019-9-15 11:50:00'));
+    setInterval(countDown, 1000);
+</script>
+<body>
+    
+</body>
+</html>

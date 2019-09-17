@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    var data=new Date;
+    var y=data.getFullYear();
+    var m=data.getMonth()+1;
+    var d=data.getDate();
+    var day=data.getDay();
+    var arr=['星期天','星期天','星期天','星期三','星期天','星期天'];
+    console.log(y+'年'+m+'月'+d+'日 '+arr[day]);
+    
+    var h=data.getHours();
+    var minutes=data.getMinutes();
+    var s=data.getSeconds();
+    h=s<10 ? '0'+h : h;
+    minutes=minutes<10 ? '0'+minutes : minutes;
+    s=s<10 ? '0'+s : s;
+    var date1 = +new Date();
+    var date2=data.getTime();
+    var date3=data.valueOf();
+    console.log(date1);
+    console.log(date2);
+    console.log(date3);
+console.log(Date.now());
+    
+</script>
+<body>
+
+</body>
+</html>

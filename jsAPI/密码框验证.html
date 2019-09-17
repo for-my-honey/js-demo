@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        text-align: center;
+        margin-top: 200px;
+    }
+</style>
+<body>
+    <div>
+        <input type="password" id="psd">
+        <label for="">请输入6-12位密码</label>
+    </div>
+    <script>
+        var psd=document.querySelector("#psd");
+        var lbl=document.querySelector("label");
+        psd.onblur=function(){
+            if(psd.value.length<6 || psd.value.length>12){
+                lbl.innerHTML="密码应该为6-12位!";
+                lbl.style.color="red";
+            }
+            if(psd.value.length==0){
+                lbl.innerHTML="密码不能为空！";
+                lbl.style.color="red";
+            }
+            if(psd.value.length<=16 && psd.value.length>=6){
+                lbl.innerHTML="密码格式准确";
+                lbl.style.color="green";
+            }
+        }
+    </script>
+</body>
+</html>

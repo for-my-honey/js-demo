@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;color: gray;}
+        body{font-family: "微软雅黑","宋体",serif;background-color: #e8e0e7;}
+        #login{width: 350px;margin: 100px auto;background-color: #f9f1f8;padding: 20px 25px;}
+            #login h3{line-height: 50px;}
+            #login p .login-text{padding-left:50px;height: 40px;width:300px;margin:10px 0;border: 1px solid #cbc4ca;background: url("img/text.jpg") no-repeat;}
+            #login p .psd{background: url("img/psd.jpg") no-repeat;}
+            #login p .login-btn{width: 350px;height: 40px;margin-top:10px;font-size:18px;font-weight:bold;color:white;background-color: #ff6109;border: none;border-radius: 3px;}
+            #login p .login-btn:hover{background-color:red;cursor: pointer;}
+            #login p a{font-size: 14px;line-height: 30px;margin-left: 10px;}
+            #login p a:hover{color: #fa100a;}
+            #login .login-type{margin-top: 20px;}
+            #login .login-set{text-align: right;}
+    </style>
+</head>
+<body>
+    <form action="#" method="post" name="login" id="login">
+        <h3>密码登录</h3>
+        <p><input class="login-text" type="text" placeholder="会员名/邮箱/手机号" autofocus required></p>
+        <p><input class="login-text psd" type="password" placeholder="密码"></p>
+        <p><input class="login-btn" type="submit" value="登  录"></p>
+        <p class="login-type"><a href="#">微博登录</a><a href="#">支付宝登录</a></p>
+        <p class="login-set"><a href="#">忘记密码</a><a href="#">忘记会员名</a><a href="#">免费注册</a></p>
+    </form>
+</body>
+</html>

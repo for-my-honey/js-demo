@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,html{
+            height: 100%;
+            background: url('images/1.jpg') no-repeat center center;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+        }
+        li{
+            list-style: none;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+        li:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+        img{
+            width: 180px;
+            display: block;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="bgc">
+        <li><img src="./images/1.jpg" alt=""></li>
+        <li><img src="./images/2.jpg" alt=""></li>
+        <li><img src="./images/3.jpg" alt=""></li>
+        <li><img src="./images/4.jpg" alt=""></li>
+    </ul>
+    <script>
+        var oul=document.querySelectorAll('img');
+        var bd=document.querySelector('body');
+        for(var i=0;i<oul.length;i++){
+            oul[i].onclick=function(){
+                bd.style.background="url('"+this.src+"') no-repeat center center";
+                for(var i=0;i<oul.length;i++){
+                    oul[i].style.border="";
+                }
+                this.style.border="5px solid rgba(255, 255, 255, 0.836)";
+            }
+        }
+    </script>
+</body>
+</html>

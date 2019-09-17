@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button>按钮1</button>
+        <button>按钮2</button>
+        <button>按钮3</button>
+        <button>按钮4</button>
+        <button>按钮5</button>
+    </div>
+
+    <script>
+        var list=document.querySelectorAll("button");
+        for(var i=0;i<list.length;i++){
+            list[i].onclick=function(){
+                for(var j=0;j<list.length;j++){
+                list[j].style.background="";
+            } //核心思想是先清除所有样式，再添加指定按钮样式
+                this.style.background="green";
+            }
+        }
+
+
+        //事件委托的做法
+        // var div=document.querySelector("div");
+        // var list=document.querySelectorAll("button");
+        // div.onclick=function(e){
+        //         for(var j=0;j<list.length;j++){
+        //         list[j].style.background="";
+        //     } //核心思想是先清除所有样式，再添加指定按钮样式
+        //         e.target.style.background="green";}
+    </script>
+</body>
+</html>

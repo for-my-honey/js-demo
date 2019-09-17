@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    console.log(Math.abs(-25));
+    console.log(Math.abs('-25'));//存在隐式转换可以求绝对值
+    console.log(Math.abs('wq'));//结果为NaN  not a number
+    console.log(Math.floor(1.9));
+    console.log(Math.ceil(1.1));
+    console.log(Math.round(1.5));
+    console.log(Math.round(-1.5));
+    function getRandom(min,max){
+        return Math.floor(Math.random()*(max-min+1))+min; //随机整数
+    }
+    // console.log(Math.random()); //o到1（包含0）的随机小数
+    // console.log(getRandom(1,10)); 
+    var m=getRandom(1,50);
+    for(var i=10;i>0;i--) {
+        var n=prompt('请输入你猜的1-50数字呀');
+        if(i>1){
+            if(m<n){
+                alert('你猜大了,'+'还有'+(i-1)+'次机会哦！');
+            }
+            else if(m>n){
+                alert('你猜小了,'+'还有'+(i-1)+'次机会哦！');
+            }
+            else if(m=n){
+                alert('你真棒，猜对了');
+                break;
+            }
+        }else{
+                alert('机会用完了哦!');
+            }
+    }
+</script>
+<body>
+    
+</body>
+</html>

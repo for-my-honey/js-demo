@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var arr1=[1,45,24,16,78,10,2];
+        var arr2=[];
+        var arr3=[];
+        var arr4=[];
+        var k=arr1.length
+        var j=0;
+        for(var i=0;i<arr1.length;i++){
+            if(arr1[i]<45){
+                arr2[arr2.length]=arr1[i];
+                j++;
+            }
+        }
+        for(var i=0;i<arr1.length;i++){
+            if(arr1[i]!=16){
+                arr3[arr3.length]=arr1[i];
+            }
+        }
+        for(var i=0;i<arr1.length;i++){
+            arr4[k-1]=arr1[i];
+            k--;
+        }
+
+        console.log(arr2)
+        console.log(arr3)
+        console.log(arr4)
+        console.log(arr1)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

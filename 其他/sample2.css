@@ -1,0 +1,19 @@
+*{margin: 0;padding: 0;}
+.clearfix{
+    zoom: 1;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+body{font-family: "微软雅黑", "宋体", serif;}
+.wrape{height: 600px;width: 400px;background: #eaeaea;margin: 10px auto;}
+ul{margin: 0 15px;}
+li{list-style: none;box-sizing:border-box;background: #000000;color: #ffffff;float: left;width: 100px;height: 90px;margin: 11px;}
+h2,p,h4{text-align: center;margin-top: 10px;}
+p{font-size: 14px;}
+.actives{background: white;color: #dc0001;border: black solid 1px;}
+.content{width: 344px;height: 140px;margin-left: 26px;background: #e5f8ee;border: #baaeb4 solid 1px;}

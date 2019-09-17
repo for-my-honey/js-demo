@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/angel.gif" alt="#">
+    <script>
+        var img=document.querySelector('img');
+        // body.onmousemove=function(){
+        //     alert(1111);
+        // }
+        document.addEventListener('mousemove',function(e){
+            console.log(e.clientX);
+            console.log(e.clientY);//相对于可视区的位置
+            
+            var x=e.pageX;
+            var y=e.pageY;//相对于页面的位置
+            img.style.left=x+'px';
+            img.style.top=y+'px';
+        })
+    </script>
+</body>
+</html>

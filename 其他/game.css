@@ -1,0 +1,19 @@
+*{margin: 0;padding: 0}
+body{font-family: "微软雅黑", "宋体", serif; background: url("img/bg-body.jpg") no-repeat center top;}
+img{display:block;margin: 0 auto;}
+    img:hover{transform: rotatey(360deg);transition: all ease-in 1s;}
+form{opacity:0.9;border: gray solid 1px;border-radius:5px;background-color:#2a3140;width: 600px;color: white;padding-left: 90px;margin: 20px auto;}
+table{width: 600px;}
+table td{height: 60px;}
+.type1 input,select{width: 500px;height: 30px;background-color: black;border: gray solid 1px;color: white;}
+table label input{background-color: black;width: 50px;}
+table label a{color: #188bf8;text-decoration: none;margin: 0 5px;}
+    table label a:hover{text-decoration: underline;color: #75e900;}
+h2{text-align: center;width:515px;margin-top: 30px;font-weight: normal;}
+p{margin-top: 15px;font-weight: normal;font-size: 14px;}
+    p b{font-weight: normal;color: #75e900;}
+.type-btn1{border-radius:3px;width: 500px;height: 30px;margin-top: 20px;background-color: #0889c4;border: none;color: white; cursor: pointer;}
+.type-btn2{border-radius:3px;width: 500px;height: 30px;color: #0889c4;background-color: #191c23;border: gray solid 1px;cursor: pointer;}
+.type-btn1:hover{background-color:blue;}
+.type-btn2:hover{color: white;}
+/*table input,select{width: 500px;}*/

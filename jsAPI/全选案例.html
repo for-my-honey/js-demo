@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <input type="checkbox" name="" id="selectAll">全选
+        </li>
+    </ul>
+    <ul id="select">
+        <li><input type="checkbox" name="" id="">1</li>
+        <li><input type="checkbox" name="" id="">2</li>
+        <li><input type="checkbox" name="" id="">3</li>
+        <li><input type="checkbox" name="" id="">4</li>
+    </ul>
+<script>
+    var all=document.getElementById("selectAll");
+    var select=document.getElementById("select");
+    var input=document.getElementsByTagName("input");
+    for(var i=0;i<input.length;i++){
+        input[i].onclick=function(){
+            for(var i=0;i<input.length;i++){
+                if(input[i].checked==false){
+                    all.checked=false;
+                }else{
+                    all.checked=true;
+                }
+            }
+        }
+    all.onclick=function(){
+        for(var i=0;i<input.length;i++){
+        if(all.checked==true){
+            input[i].checked=true;
+        }else
+        {
+            input[i].checked=false;
+        }
+}
+}
+    }
+// console.log(all);
+// console.log(input);
+</script>
+</body>
+</html>

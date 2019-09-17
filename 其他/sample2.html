@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易日历</title>
+    <link rel="stylesheet" href="sample2.css">
+    <script>
+        window.onload=function () {
+            var arr=['1月我每天都要玩......','2月我每天都要玩......','3月我每天都要玩......','4月我每天都要玩......',
+                '5月......','6月......','7月......','8月......',
+                '9月......','10月......','11月......','12月......'];
+            var mDiv=document.getElementById('ul1');
+            var list=mDiv.getElementsByTagName('li');
+            var oDiv=document.getElementById('content');
+            for(var i=0;i<list.length;i++){
+                list[i].index=i;
+                list[i].onmouseover=function () {
+                    for(var i=0;i<list.length;i++){
+                        list[i].className='';
+//                        nDiv[i].style.display='none';
+                    }
+                    this.className='actives';
+                    oDiv.innerHTML='<h4>'+(this.index+1)+'月活动<h4/><p>'+arr[this.index]+'</p>';
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrape">
+        <ul class="clearfix" id="ul1">
+            <li class="actives"><h2>1</h2><p>JAN</p></li>
+            <li><h2>2</h2><p>FER</p></li>
+            <li><h2>3</h2><p>MAR</p></li>
+            <li><h2>4</h2><p>APR</p></li>
+            <li><h2>5</h2><p>MAY</p></li>
+            <li><h2>6</h2><p>JUN</p></li>
+            <li><h2>7</h2><p>JUL</p></li>
+            <li><h2>8</h2><p>AUG</p></li>
+            <li><h2>9</h2><p>SEP</p></li>
+            <li><h2>10</h2><p>OCT</p></li>
+            <li><h2>11</h2><p>NOV</p></li>
+            <li><h2>12</h2><p>DEC</p></li>
+        </ul>
+        <div class="content" id="content">
+        </div>
+    </div>
+</body>
+</html>

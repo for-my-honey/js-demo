@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    var max=0;
+    function getMax(){
+        for(var i=0;i<arguments.length;i++){ //arguments是一个内置伪数组，相当于接收的参数（1，55，777）
+            if(arguments[i]>=max){
+                max=arguments[i];
+            }
+        }
+        return max;
+    }
+    console.log(getMax(1,55,777));
+    
+</script>
+<body>
+    
+</body>
+</html>

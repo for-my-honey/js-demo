@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js运动基础</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: chartreuse;
+            position: absolute;
+            top: 200px;
+            left: 0;
+        }
+        #div2{
+            width: 200px;
+            height: 600px;
+            background: cyan;
+            position: absolute;
+            left: -200px;
+            top: 100px;
+        }
+        #span1{
+            width: 50px;
+            height: 200px;
+            background: chartreuse;
+            position: absolute;
+            left: 200px;
+            top: 300px;
+            font-size: 26px;
+            text-align: center;
+            line-height: 60px;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var oDiv=document.getElementById('div1');
+            var oBtn=document.getElementById('btn1');
+            var Timer=null;
+
+            oBtn.onclick=function startMove() {
+                clearInterval(Timer);
+                Timer=setInterval(function () {
+                    var s=(1000-oDiv.offsetLeft)/15;//减法实现缓冲效果。
+                    s=Math.ceil(s);//取整函数向上取整，去除间隙。
+                    if (oDiv.offsetLeft>=1000){
+                        clearInterval(Timer);
+                    }
+                    else {
+                        oDiv.style.left=oDiv.offsetLeft+s+'px';
+                    }
+                },30);
+            };
+            function times(speeds,n) {
+                clearInterval(time);//清除先前定时器
+                time=setInterval(function () {
+                    if (oDiv2.offsetLeft==n){
+                        clearInterval(time);
+                    }
+                    else {
+                        oDiv2.style.left=oDiv2.offsetLeft+speeds+'px';
+                    }
+                },30)
+            }
+            var oDiv2=document.getElementById('div2');
+            var oSpan=document.getElementById('span1');
+            var time=null;
+            oDiv2.onmouseover=function () {
+                times(10,0);//设置变量速度为10，向右出现。left为0停止
+            };
+            oDiv2.onmouseout=function () {
+                times(-10,-200);//设置变量速度为-10，向左隐藏，left为-200，隐藏完毕。
+            };
+            var oDiv3=document.getElementById('div3');
+            var start=null;
+//            function turn(opa,iTarget) {
+//                clearInterval(start);
+//                start=setInterval(function () {
+////                    opa=0.3;
+//                    if (opa==iTarget){
+//                        clearInterval(start);
+//                    }
+//                    else {
+//                        opa=opa+;
+//                        oDiv3.style.opacity=opa;
+//                        oDiv3.style.filter='alpha(opacity:'+opa*100+');';
+//                    }
+//                },30)
+//            }
+            oDiv3.onmouseover=function () {
+                var opa=0.3;
+                clearInterval(start);
+                start=setInterval(function () {
+                    if (opa==1){
+                        clearInterval(start);
+                    }
+                    else {
+                        opa=opa+0.1;
+                        oDiv3.style.opacity=opa;
+                        oDiv3.style.filter='alpha(opacity:'+opa*100+');';
+                    }
+                },30)
+            };
+            oDiv3.onmouseout=function () {
+                var opa=1;
+                clearInterval(start);
+                start=setInterval(function () {
+                    if (opa==0.3){
+                        clearInterval(start);
+                    }
+                    else {
+                        opa=opa-0.1;
+                        oDiv3.style.opacity=opa;
+                        oDiv3.style.filter='alpha(opacity:'+opa*100+');';
+                    }
+                },30)
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="div1">
+
+    </div>
+    <input type="button" id="btn1" value="开始运动">
+    <div id="div2">
+        <span id="span1">
+            分享到
+        </span>
+    </div>
+    <div id="div3"  style="margin: 0 auto;width: 500px;opacity: 0.3;filter: alpha(opacity:30);">
+        <img src="img/bg-body.jpg" alt="" width="500px;">
+    </div>
+</body>
+</html>
