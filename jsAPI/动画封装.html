@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        width: 100px;
+        height: 100px;
+        background: black;
+        position: relative;
+    }
+</style>
+<body>
+    <button class="button">dianji</button>
+    <button class="haha">dadad</button>
+    <div>
+
+    </div>
+    <script>
+        function animate(obj,target,callback){       
+            clearInterval(obj.timer);//清除定时器防止定时器重复添加
+            obj.timer=setInterval(function(){
+                var step=(target-obj.offsetLeft)/10; //定义一个步长，实现速度变化
+                step=step>0 ? Math.ceil(step) : Math.floor(step); //解决取整问题的bug
+                if(obj.offsetLeft==target){//判断运动距离与目标距离相等，停止运动
+                    clearInterval(obj.timer);
+                    if(callback){
+                        callback();//如果有回调函数，执行回调函数
+                    }
+                }
+                obj.style.left=obj.offsetLeft+step+'px'; //实现运动
+            },15);
+        }
+        var div=document.querySelector('div');
+        var btn=document.querySelector('.button');
+        var haha=document.querySelector('.haha');
+        btn.addEventListener('click',function(){
+            animate(div,500,function(){alert(1111)});
+        })
+        haha.addEventListener('click',function(){
+            animate(div,200,function(){alert(222)});
+        })
+    </script>
+</body>
+</html>

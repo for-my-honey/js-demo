@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./animate.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        img{
+            display: block;
+        }
+        .focus{
+            width: 730px;
+            margin: 50px auto;
+            /* border: 1px solid gray; */
+            position: relative;
+            overflow: hidden;
+        }
+        .image{
+            width: 2920px;
+            height: 454px;
+            position: relative;
+        }
+        .image li{
+            float: left;
+        }
+        .button{
+            position: absolute;
+            display: none;
+            top: 50%;
+            margin-top: -20px;
+        }
+        .button a{
+            display: inline-block;
+            line-height: 40px;
+            width: 30px;
+            height: 40px;
+            text-align: center;
+            background: black;
+            opacity: .4;
+        }
+        .button a:hover{
+            color: red;
+        }
+        .next{
+            position: absolute;
+            left: 700px;
+            top: 50%;
+            margin-top: -20px; 
+        }
+        .round{
+            position: absolute;
+            top: 430px;
+            margin-left: 321px;
+        }
+        .round li{
+            width: 10px;
+            height: 10px;
+            border: 1px solid gray;
+            border-radius: 50%;
+            float: left;
+            margin-left: 10px;
+        }
+        .clear{
+            clear: both;
+        }
+        .current{
+            background: black;
+        }
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+            var focus=document.querySelector('.focus');
+            var button=document.querySelector('.button');
+            var prev=document.querySelector('.prev');
+            var next=document.querySelector('.next');
+            var focusWidth=focus.offsetWidth;//获取轮播区域的宽度
+            
+            focus.addEventListener('mouseover',function(){
+                button.style.display='block';
+                clearInterval(timer);
+                timer=null;
+            })//设置鼠标进入，显示前进后退按钮，且关闭定时器，停止滚动
+            focus.addEventListener('mouseout',function(){
+                button.style.display='none';
+                timer=setInterval(function(){
+                    next.click();
+                },2000)
+            })//设置鼠标离开，隐藏前进后退按钮，且开启定时器，开始滚动
+
+            var image=document.querySelector('.image');
+            var round=document.querySelector('.round');
+            var length=image.children.length;
+            for(var i=0;i<length;i++){
+                var li=document.createElement('li');
+                round.appendChild(li);//动态添加小圆圈，小圆圈个数跟随图片个数变化
+                li.setAttribute('index',i);//设置自定义属性index
+            }
+            round.children[0].className='current';//添加第一个小圆圈默认样式
+            
+            var roundLi=round.children;
+            for(var i=0;i<roundLi.length;i++){
+                roundLi[i].addEventListener('click',function(){
+                    for(var i=0;i<roundLi.length;i++){////小圆圈点击事件，改变颜色和图片位置
+                        roundLi[i].className='';
+                    }//排他思想
+                    this.className='current';
+                    var index=this.getAttribute('index');
+                    num=index;
+                    circle=index;
+                    var focusWidth=focus.offsetWidth;
+                    animate(image,-index*focusWidth);//利用index计算图片运动的距离，实现点击小圆圈的效果
+                })
+            }
+            //使用克隆增加一个li放在ul的最后面，实现无缝滚动的视觉效果
+            var first=image.children[0].cloneNode(true);//深克隆
+            image.appendChild(first);
+
+            var lengths=image.children.length;
+            image.style.width=lengths*focusWidth+'px';
+            //鼠标点击前进按钮的点击事件
+            var num=0;
+            var circle=0;//控制小圆圈的变化
+            var flag=true;
+            next.addEventListener('click',function(){
+                if(flag){ //flag节流阀防止动画运行过快
+                    flag=false;
+                    if(num==lengths-1){
+                        image.style.left=0;
+                        num=0;//点击切换到最后一张的时候，位置拉回原始位置，重新赋值num
+                    }
+                    num++;
+                    animate(image,-focusWidth*num,function(){
+                        flag=true;
+                    });
+                    circle++;
+                    if(circle==length){
+                        circle=0;
+                    }
+                    circleChange();
+                }
+            })
+            //鼠标点击后退按钮的点击事件
+            prev.addEventListener('click',function(){
+                if(flag){
+                    flag=false;
+                    if(num==0){
+                        num=lengths-1;
+                        image.style.left=-num * focusWidth +'px'; 
+                    }
+                    num--;
+                    animate(image,-focusWidth*num,function(){
+                        flag=true;
+                    });
+                    circle--;
+                    if(circle<0){
+                        circle=roundLi.length-1;
+                    }
+                    circleChange();
+                }
+            })
+            //把公共部分小圆圈变化封装成函数
+            function circleChange(){
+                for(var i=0;i<roundLi.length;i++){
+                        roundLi[i].className='';
+                    };
+                roundLi[circle].className='current';  
+            }
+            //设置一个定时器
+            var timer=setInterval(function(){
+                next.click();//每两秒执行一次next的点击函数，实现定时轮播切换
+            },2000)
+        })
+    </script>
+</head>
+<body>
+    <div class="focus">
+        <ul class="image">
+            <li><a href="#"><img src="./images/banner1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/banner2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/banner3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/banner4.jpg" alt=""></a></li>
+        </ul>
+        <ul class="round"></ul>
+        <div class="button">
+            <a href="javascript:;" class="prev"><<</a>
+            <a href="javascript:;" class="next">>></a>
+        </div>
+    </div>
+</body>
+</html>
